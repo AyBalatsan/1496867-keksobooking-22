@@ -32,54 +32,50 @@ const avatars = [
   'img/avatars/user05.png',
   'img/avatars/user06.png',
   'img/avatars/user07.png',
-  'img/avatars/user08.png'
+  'img/avatars/user08.png',
 ];
 
-
-const randomAvatar = getRandom(0, avatars.length - 1, 0);
+const getAuthor = () => {
+  const randomAvatar = getRandom(0, avatars.length - 1, 0);
+  const author = {
+    avatar: avatars[randomAvatar],
+  }
+  return author
+};
 
 const numberAuthor = 10;
 const nearbyAuthor = [];
+
 for (let i = 0; i < numberAuthor; i++){
-  const author = {
-  avatar: avatars[randomAvatar],
-}
-  nearbyAuthor.push(author);
+  nearbyAuthor.push(getAuthor())
 }
 
-console.log(nearbyAuthor);
-
-let structure = [
+const structure = [
   'palace',
   'flat',
   'house',
-  'bungalow'
+  'bungalow',
 ];
 
 const timeIn = [
   '12:00',
   '13:00',
-  '14:00'
+  '14:00',
 ];
 
 const timeOut = [
   '12:00',
   '13:00',
-  '14:00'
+  '14:00',
 ];
 
 const photo = [
-'http://o0.github.io/assets/images/tokyo/hotel1.jpg',
-'http://o0.github.io/assets/images/tokyo/hotel2.jpg',
-'http://o0.github.io/assets/images/tokyo/hotel3.jpg'
+  'http://o0.github.io/assets/images/tokyo/hotel1.jpg',
+  'http://o0.github.io/assets/images/tokyo/hotel2.jpg',
+  'http://o0.github.io/assets/images/tokyo/hotel3.jpg',
 ];
 
-let randomStructure = getRandom(0, structure.length - 1, 0);
-let randomIn = getRandom(0, timeIn.length - 1, 0);
-let randomOut = getRandom(0, timeOut.length - 1, 0);
-let randomPhotos = getRandom(0, photo.length - 1, 0);
 
-const randomBoolean = () => Math.floor(Math.random() * 2) === 0;
 
 const mFeatures = [
   'wifi',
@@ -87,34 +83,43 @@ const mFeatures = [
   'parking',
   'washer',
   'elevator',
-  'conditioner'
+  'conditioner',
 ];
-
-const randomFeatures = mFeatures.filter(element => randomBoolean());
 
 let getLocation = function (){
   return {
-  x: getRandomFraction(35.65, 35.7),
-  y: getRandomFraction(139.7, 139.8)
+    x: getRandomFraction(35.65, 35.7),
+    y: getRandomFraction(139.7, 139.8),
   }
+};
+
+const getOffer = () => {
+  const randomBoolean = () => Math.floor(Math.random() * 2) === 0;
+  const randomFeatures = mFeatures.filter(() => randomBoolean());
+  const randomStructure = getRandom(0, structure.length - 1, 0);
+  const randomIn = getRandom(0, timeIn.length - 1, 0);
+  const randomOut = getRandom(0, timeOut.length - 1, 0);
+  const randomPhotos = getRandom(0, photo.length - 1, 0);
+
+  const offer = {
+    title: 'Добро пожаловать к нам в ',
+    address: getLocation(),
+    price: getRandom(1, 1000000, 0),
+    type: structure[randomStructure],
+    rooms: getRandom(1, 20, 0),
+    guests: getRandom(1, 500, 0),
+    checkin: timeIn[randomIn],
+    checkout: timeOut[randomOut],
+    features: randomFeatures,
+    description: 'Хочется начать с того, что каждому человеку хочется найти место, где бы он чувствовал себя в безопасности и не испытывал дискомфорта. Так что это как раз, что вы искали',
+    photos: photo[randomPhotos],
+  }
+  return offer;
 };
 
 const numberObjects = 10;
 const nearbyObjects = [];
+
 for (let i = 0; i < numberObjects; i++){
-  const offer = {
-  title: 'Добро пожаловать к нам в ',
-  address: getLocation(),
-  price: getRandom(1, 1000000, 0),
-  type: structure[randomStructure],
-  rooms: getRandom(1, 20, 0),
-  guests: getRandom(1, 500, 0),
-  checkin: timeIn[randomIn],
-  checkout: timeOut[randomOut],
-  features: randomFeatures,
-  description: 'Хочется начать с того, что каждому человеку хочется найти место, где бы он чувствовал себя в безопасности и не испытывал дискомфорта. Так что это как раз, что вы искали',
-  photos: photo[randomPhotos],
-};
-  nearbyObjects.push(offer)
-};
-console.log(nearbyObjects);
+  nearbyObjects.push(getOffer())
+}
