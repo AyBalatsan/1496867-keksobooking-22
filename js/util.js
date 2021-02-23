@@ -1,4 +1,3 @@
-//модуль с утилитарными функциями;
 let getRandom = function getRandomInRange(min, max, digitNumber) {
   digitNumber = Math.pow(10, digitNumber);
 

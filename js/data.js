@@ -1,15 +1,10 @@
 import {getAuthor, getOffer} from './util.js';
-//модуль, который создаёт данные.
-const numberAuthor = 10;
+
+const numberRequests = 10;
 const nearbyAuthor = [];
-
-for (let i = 0; i < numberAuthor; i++){
-  nearbyAuthor.push(getAuthor())
-}
-
-const numberObjects = 10;
 const nearbyObjects = [];
 
-for (let i = 0; i < numberObjects; i++){
-  nearbyObjects.push(getOffer())
+for (let i = 0; i < numberRequests; i++){
+  nearbyAuthor.push(getAuthor());
+  nearbyObjects.push(getOffer());
 }
