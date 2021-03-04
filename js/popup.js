@@ -13,30 +13,31 @@ const popupDescription = card.querySelector('.popup__description');
 const popupPhotos = card.querySelector('.popup__photos');
 const popupAvatar = card.querySelector('.popup__avatar');
 
+const getTypeProperty = function(type){
+  switch (type) {
+    case 'flat':
+      popupType.textContent = 'Квартира'
+      break;
+    case 'palace':
+      popupType.textContent = 'Дворец'
+      break;
+    case 'house':
+      popupType.textContent = 'Дом'
+      break;
+    case 'bungalow':
+      popupType.textContent = 'Бунгало'
+      break;
+    default:
+      popupType.textContent = 'error'
+      break;
+  }
+}
 for (let i = 0; i < 1; i++){
   popupTitle.textContent = nearbyObjects[i].title;
   popupAddress.textContent = nearbyObjects[i].address;
   popupPrice.textContent = nearbyObjects[i].price + ' ₽/ночь';
   const typeProperty = nearbyObjects[i].type;
-  const getTypeProperty = function(typePro){
-    switch (typePro) {
-      case 'flat':
-        popupType.textContent = 'Квартира'
-        break;
-      case 'palace':
-        popupType.textContent = 'Дворец'
-        break;
-      case 'house':
-        popupType.textContent = 'Дом'
-        break;
-      case 'bungalow':
-        popupType.textContent = 'Бунгало'
-        break;
-      default:
-        popupType.textContent = 'error'
-        break;
-    }
-  }
+  getTypeProperty(typeProperty);
   popupCapacity.textContent = `${nearbyObjects[i].rooms} комнаты для ${nearbyObjects[i].guests} гостей`;
   popupTime.textContent = `Заезд после ${nearbyObjects[i].checkin}, выезд до ${nearbyObjects[i].checkout}`;
   popupFeatures.textContent = nearbyObjects[i].features;
