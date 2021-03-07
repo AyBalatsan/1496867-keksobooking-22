@@ -8,3 +8,5 @@ for (let i = 0; i < numberRequests; i++){
   nearbyAuthor.push(getAuthor());
   nearbyObjects.push(getOffer());
 }
+export {nearbyAuthor, nearbyObjects};
+

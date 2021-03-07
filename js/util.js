@@ -95,7 +95,7 @@ const getOffer = () => {
   const offer = {
     title: 'Добро пожаловать к нам в ',
     address: getLocation(),
-    price: getRandom(1, 1000000, 0),
+    price: getRandom(1000, 300000, 0),
     type: structure[randomStructure],
     rooms: getRandom(1, 20, 0),
     guests: getRandom(1, 500, 0),
