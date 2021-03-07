@@ -13,6 +13,7 @@ const popupFeatures = card.querySelector('.popup__features');
 const popupDescription = card.querySelector('.popup__description');
 const popupPhotos = card.querySelector('.popup__photos');
 const popupAvatar = card.querySelector('.popup__avatar');
+
 const getTypeProperty = function(type){
   switch (type) {
     case 'flat':
