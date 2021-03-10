@@ -13,6 +13,7 @@ const popupFeatures = card.querySelector('.popup__features');
 const popupDescription = card.querySelector('.popup__description');
 const popupPhotos = card.querySelector('.popup__photos');
 const popupAvatar = card.querySelector('.popup__avatar');
+
 const getTypeProperty = function(type){
   switch (type) {
     case 'flat':
@@ -33,22 +34,23 @@ const getTypeProperty = function(type){
   }
 }
 
-for (let i = 0; i < 1; i++){
+const getPopup = (coefficient) => {
   const clonedElement = popup.cloneNode(true);
-  const typeProperty = nearbyObjects[i].type;
+  const typeProperty = nearbyObjects[coefficient].type;
 
   getTypeProperty(typeProperty);
 
-  popupTitle.textContent = nearbyObjects[i].title;
-  popupAddress.textContent = nearbyObjects[i].address;
-  popupPrice.textContent = nearbyObjects[i].price + ' ₽/ночь';
-  popupCapacity.textContent = `${nearbyObjects[i].rooms} комнаты для ${nearbyObjects[i].guests} гостей`;
-  popupTime.textContent = `Заезд после ${nearbyObjects[i].checkin}, выезд до ${nearbyObjects[i].checkout}`;
-  popupFeatures.textContent = nearbyObjects[i].features;
-  popupDescription.textContent = nearbyObjects[i].description;
-  popupPhotos.src = nearbyObjects[i].photos;
-  popupAvatar.src = nearbyAuthor[i].avatar;
+  popupTitle.textContent = nearbyObjects[coefficient].title;
+  popupAddress.textContent = nearbyObjects[coefficient].address;
+  popupPrice.textContent = nearbyObjects[coefficient].price + ' ₽/ночь';
+  popupCapacity.textContent = `${nearbyObjects[coefficient].rooms} комнаты для ${nearbyObjects[coefficient].guests} гостей`;
+  popupTime.textContent = `Заезд после ${nearbyObjects[coefficient].checkin}, выезд до ${nearbyObjects[coefficient].checkout}`;
+  popupFeatures.textContent = nearbyObjects[coefficient].features;
+  popupDescription.textContent = nearbyObjects[coefficient].description;
+  popupPhotos.src = nearbyObjects[coefficient].photos;
+  popupAvatar.src = nearbyAuthor[coefficient].avatar;
 
-  mapCanvas.appendChild(clonedElement);
+  return clonedElement;
 }
 
+export {getPopup};
