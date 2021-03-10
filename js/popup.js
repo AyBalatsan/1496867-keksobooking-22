@@ -1,6 +1,5 @@
 import {nearbyAuthor, nearbyObjects} from './data.js';
 
-const mapCanvas = document.querySelector('#map-canvas');
 const card = document.querySelector('#card').content;
 const popup = card.querySelector('.popup');
 const popupTitle = card.querySelector('.popup__title');
