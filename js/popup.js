@@ -33,21 +33,21 @@ const getTypeProperty = function(type){
   }
 }
 
-const getPopup = (coefficient) => {
+const getPopup = (coeff) => {
   const clonedElement = popup.cloneNode(true);
-  const typeProperty = nearbyObjects[coefficient].type;
+  const typeProperty = nearbyObjects[coeff].type;
 
   getTypeProperty(typeProperty);
 
-  popupTitle.textContent = nearbyObjects[coefficient].title;
-  popupAddress.textContent = nearbyObjects[coefficient].address;
-  popupPrice.textContent = nearbyObjects[coefficient].price + ' ₽/ночь';
-  popupCapacity.textContent = `${nearbyObjects[coefficient].rooms} комнаты для ${nearbyObjects[coefficient].guests} гостей`;
-  popupTime.textContent = `Заезд после ${nearbyObjects[coefficient].checkin}, выезд до ${nearbyObjects[coefficient].checkout}`;
-  popupFeatures.textContent = nearbyObjects[coefficient].features;
-  popupDescription.textContent = nearbyObjects[coefficient].description;
-  popupPhotos.src = nearbyObjects[coefficient].photos;
-  popupAvatar.src = nearbyAuthor[coefficient].avatar;
+  popupTitle.textContent = nearbyObjects[coeff].title;
+  popupAddress.textContent = nearbyObjects[coeff].address;
+  popupPrice.textContent = nearbyObjects[coeff].price + ' ₽/ночь';
+  popupCapacity.textContent = `${nearbyObjects[coeff].rooms} комнаты для ${nearbyObjects[coeff].guests} гостей`;
+  popupTime.textContent = `Заезд после ${nearbyObjects[coeff].checkin}, выезд до ${nearbyObjects[coeff].checkout}`;
+  popupFeatures.textContent = nearbyObjects[coeff].features;
+  popupDescription.textContent = nearbyObjects[coeff].description;
+  popupPhotos.src = nearbyObjects[coeff].photos;
+  popupAvatar.src = nearbyAuthor[coeff].avatar;
 
   return clonedElement;
 }
