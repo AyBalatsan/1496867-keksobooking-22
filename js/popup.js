@@ -1,6 +1,5 @@
 import {nearbyAuthor, nearbyObjects} from './data.js';
 
-const mapCanvas = document.querySelector('#map-canvas');
 const card = document.querySelector('#card').content;
 const popup = card.querySelector('.popup');
 const popupTitle = card.querySelector('.popup__title');
@@ -13,6 +12,7 @@ const popupFeatures = card.querySelector('.popup__features');
 const popupDescription = card.querySelector('.popup__description');
 const popupPhotos = card.querySelector('.popup__photos');
 const popupAvatar = card.querySelector('.popup__avatar');
+
 const getTypeProperty = function(type){
   switch (type) {
     case 'flat':
@@ -33,22 +33,23 @@ const getTypeProperty = function(type){
   }
 }
 
-for (let i = 0; i < 1; i++){
+const getPopup = (coeff) => {
   const clonedElement = popup.cloneNode(true);
-  const typeProperty = nearbyObjects[i].type;
+  const typeProperty = nearbyObjects[coeff].type;
 
   getTypeProperty(typeProperty);
 
-  popupTitle.textContent = nearbyObjects[i].title;
-  popupAddress.textContent = nearbyObjects[i].address;
-  popupPrice.textContent = nearbyObjects[i].price + ' ₽/ночь';
-  popupCapacity.textContent = `${nearbyObjects[i].rooms} комнаты для ${nearbyObjects[i].guests} гостей`;
-  popupTime.textContent = `Заезд после ${nearbyObjects[i].checkin}, выезд до ${nearbyObjects[i].checkout}`;
-  popupFeatures.textContent = nearbyObjects[i].features;
-  popupDescription.textContent = nearbyObjects[i].description;
-  popupPhotos.src = nearbyObjects[i].photos;
-  popupAvatar.src = nearbyAuthor[i].avatar;
+  popupTitle.textContent = nearbyObjects[coeff].title;
+  popupAddress.textContent = nearbyObjects[coeff].address;
+  popupPrice.textContent = nearbyObjects[coeff].price + ' ₽/ночь';
+  popupCapacity.textContent = `${nearbyObjects[coeff].rooms} комнаты для ${nearbyObjects[coeff].guests} гостей`;
+  popupTime.textContent = `Заезд после ${nearbyObjects[coeff].checkin}, выезд до ${nearbyObjects[coeff].checkout}`;
+  popupFeatures.textContent = nearbyObjects[coeff].features;
+  popupDescription.textContent = nearbyObjects[coeff].description;
+  popupPhotos.src = nearbyObjects[coeff].photos;
+  popupAvatar.src = nearbyAuthor[coeff].avatar;
 
-  mapCanvas.appendChild(clonedElement);
+  return clonedElement;
 }
 
+export {getPopup};
