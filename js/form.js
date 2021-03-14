@@ -37,7 +37,6 @@ const getTypeValue = function(value){
       price.placeholder = 10000;
       break;
     default:
-      console.log('error')
       break;
   }
 }
@@ -58,7 +57,6 @@ const getTime = function(value, time){
       time.value = '14:00'
       break;
     default:
-      console.log('error')
       break;
   }
 }
@@ -137,7 +135,6 @@ const getCapacity = (value) =>{
       }
       break;
     default:
-      console.log('Ошибка ')
       break;
   }
 }
