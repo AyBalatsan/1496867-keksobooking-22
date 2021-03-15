@@ -68,70 +68,80 @@ timeOut.addEventListener('change', ()=>{
   getTime(timeOut.value, timeIn);
 });
 
+const getHasDisabled = (i) =>{
+  return capacityOptions[i].hasAttribute('disabled');
+}
+const getSetDisabled = (i) =>{
+  return capacityOptions[i].setAttribute('disabled', 'disabled');
+}
+const getDelDisabled = (i) =>{
+  return capacityOptions[i].removeAttribute('disabled');
+}
+
 const getCapacity = (value) =>{
   switch (value) {
     case '1':
       capacity.value = 1;
 
-      if(!capacityOptions[0].hasAttribute('disabled')){
-        capacityOptions[0].setAttribute('disabled', 'disabled');
+      if(!getHasDisabled(0)){
+        getSetDisabled(0)
       }
-      if(!capacityOptions[1].hasAttribute('disabled')){
-        capacityOptions[1].setAttribute('disabled', 'disabled');
+      if(!getHasDisabled(1)){
+        getSetDisabled(1)
       }
-      if(capacityOptions[2].hasAttribute('disabled')){
-        capacityOptions[2].removeAttribute('disabled');
+      if(getHasDisabled(2)){
+        getDelDisabled(2)
       }
-      if(!capacityOptions[3].hasAttribute('disabled')){
-        capacityOptions[3].setAttribute('disabled', 'disabled');
+      if(!getHasDisabled(3)){
+        getSetDisabled(3)
       }
       break;
     case '2':
       capacity.value = 2;
 
-      if(!capacityOptions[0].hasAttribute('disabled')){
-        capacityOptions[0].setAttribute('disabled', 'disabled');
+      if(!getHasDisabled(0)){
+        getSetDisabled(0)
       }
-      if(capacityOptions[1].hasAttribute('disabled')){
-        capacityOptions[1].removeAttribute('disabled');
+      if(getHasDisabled(1)){
+        getDelDisabled(1)
       }
-      if(capacityOptions[2].hasAttribute('disabled')){
-        capacityOptions[2].removeAttribute('disabled');
+      if(getHasDisabled(2)){
+        getDelDisabled(2)
       }
-      if(!capacityOptions[3].hasAttribute('disabled')){
-        capacityOptions[3].setAttribute('disabled', 'disabled');
+      if(!getHasDisabled(3)){
+        getSetDisabled(3)
       }
       break;
     case '3':
       capacity.value = 3;
 
-      if(capacityOptions[0].hasAttribute('disabled')){
-        capacityOptions[0].removeAttribute('disabled');
+      if(getHasDisabled(0)){
+        getDelDisabled(0)
       }
-      if(capacityOptions[1].hasAttribute('disabled')){
-        capacityOptions[1].removeAttribute('disabled');
+      if(getHasDisabled(1)){
+        getDelDisabled(1)
       }
-      if(capacityOptions[2].hasAttribute('disabled')){
-        capacityOptions[2].removeAttribute('disabled');
+      if(getHasDisabled(2)){
+        getDelDisabled(2)
       }
-      if(!capacityOptions[3].hasAttribute('disabled')){
-        capacityOptions[3].setAttribute('disabled', 'disabled');
+      if(!getHasDisabled(3)){
+        getSetDisabled(3)
       }
       break;
     case '100':
       capacity.value = 0;
 
-      if(!capacityOptions[0].hasAttribute('disabled')){
-        capacityOptions[0].setAttribute('disabled', 'disabled');
+      if(!getHasDisabled(0)){
+        getSetDisabled(0)
       }
-      if(!capacityOptions[1].hasAttribute('disabled')){
-        capacityOptions[1].setAttribute('disabled', 'disabled');
+      if(!getHasDisabled(1)){
+        getSetDisabled(1)
       }
-      if(!capacityOptions[2].hasAttribute('disabled')){
-        capacityOptions[2].setAttribute('disabled', 'disabled');
+      if(!getHasDisabled(2)){
+        getSetDisabled(2)
       }
-      if(capacityOptions[3].hasAttribute('disabled')){
-        capacityOptions[3].removeAttribute('disabled');
+      if(getHasDisabled(3)){
+        getDelDisabled(3)
       }
       break;
     default:
