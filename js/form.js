@@ -68,87 +68,25 @@ timeOut.addEventListener('change', ()=>{
   getTime(timeOut.value, timeIn);
 });
 
-const getHasDisabled = (i) =>{
-  return capacityOptions[i].hasAttribute('disabled');
-}
-const getSetDisabled = (i) =>{
-  return capacityOptions[i].setAttribute('disabled', 'disabled');
-}
-const getDelDisabled = (i) =>{
-  return capacityOptions[i].removeAttribute('disabled');
-}
-
-const getCapacity = (value) =>{
-  switch (value) {
-    case '1':
-      capacity.value = 1;
-
-      if(!getHasDisabled(0)){
-        getSetDisabled(0)
-      }
-      if(!getHasDisabled(1)){
-        getSetDisabled(1)
-      }
-      if(getHasDisabled(2)){
-        getDelDisabled(2)
-      }
-      if(!getHasDisabled(3)){
-        getSetDisabled(3)
-      }
-      break;
-    case '2':
-      capacity.value = 2;
-
-      if(!getHasDisabled(0)){
-        getSetDisabled(0)
-      }
-      if(getHasDisabled(1)){
-        getDelDisabled(1)
-      }
-      if(getHasDisabled(2)){
-        getDelDisabled(2)
-      }
-      if(!getHasDisabled(3)){
-        getSetDisabled(3)
-      }
-      break;
-    case '3':
-      capacity.value = 3;
-
-      if(getHasDisabled(0)){
-        getDelDisabled(0)
-      }
-      if(getHasDisabled(1)){
-        getDelDisabled(1)
-      }
-      if(getHasDisabled(2)){
-        getDelDisabled(2)
-      }
-      if(!getHasDisabled(3)){
-        getSetDisabled(3)
-      }
-      break;
-    case '100':
-      capacity.value = 0;
-
-      if(!getHasDisabled(0)){
-        getSetDisabled(0)
-      }
-      if(!getHasDisabled(1)){
-        getSetDisabled(1)
-      }
-      if(!getHasDisabled(2)){
-        getSetDisabled(2)
-      }
-      if(getHasDisabled(3)){
-        getDelDisabled(3)
-      }
-      break;
-    default:
-      break;
+const getCapacity = () =>{
+  for(let i = 0; i < capacityOptions.length-1; i++){
+    if(!capacityOptions[i].hasAttribute('disabled')){
+      capacityOptions[i].setAttribute('disabled', 'disabled');
+    }
+  }
+  let check = Math.abs(roomNumber.value-capacityOptions.length);
+  if(check < capacityOptions.length){
+    for(let i = 0; i<=roomNumber.value-1; i++){
+      capacityOptions[i].removeAttribute('disabled');
+      capacity.value = roomNumber.value;
+    }
+  }
+  if(check == capacityOptions.length){
+    capacityOptions[capacityOptions.length-1].removeAttribute('disabled');
+    capacity.value = 0;
   }
 }
 
 roomNumber.addEventListener('click', ()=>{
-  getCapacity(roomNumber.value);
+  getCapacity();
 });
